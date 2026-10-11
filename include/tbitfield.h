@@ -34,11 +34,12 @@ public:
   void SetBit(const int n);       // установить бит                       (#О4)
   void ClrBit(const int n);       // очистить бит                         (#П2)
   int  GetBit(const int n) const; // получить значение бита               (#Л1)
-
+  void ClearTail();				  // занулить хвост
   // битовые операции
   int operator==(const TBitField &bf) const; // сравнение                 (#О5)
   int operator!=(const TBitField &bf) const; // сравнение
-  TBitField& operator=(const TBitField &bf); // присваивание              (#П3)
+  TBitField& operator=(const TBitField& bf); // присваивание  
+  TBitField& operator=(TBitField&& bf); // присваивание              (#П3)
   TBitField  operator|(const TBitField &bf); // операция "или"            (#О6)
   TBitField  operator&(const TBitField &bf); // операция "и"              (#Л2)
   TBitField  operator~(void);                // отрицание                  (#С)
