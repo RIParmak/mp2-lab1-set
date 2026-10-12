@@ -103,8 +103,7 @@ TSet TSet::operator*(const TSet &s) // пересечение
 
 TSet TSet::operator~(void) // дополнение
 {
-	TSet res(MaxPower);
-    res.BitField = ~BitField;
+	TSet res(~BitField);
 	return res;
 }
 
@@ -112,11 +111,34 @@ TSet TSet::operator~(void) // дополнение
 
 istream &operator>>(istream &istr, TSet &s) // ввод
 {
-    istr >> s.BitField;
+    char tmp;int num;
+    do
+    {
+        istr >> tmp;
+    } while (tmp!='{');
+    do
+    {
+        istr >> num;
+        s.InsElem(num);
+        do
+        {
+            istr >> tmp;
+        } while (tmp != ',' && tmp != '}');
+    } while (tmp!='}');
     return istr;
 }
 
 ostream& operator<<(ostream &ostr, const TSet &s) // вывод
 {
-	return ostr << s.BitField;
+    int flag = 0;
+    ostr << '{';
+    for (int i = 0;i < s.MaxPower;i++) {
+        if (s.IsMember(i)) {
+            if (flag == 0)flag = 1;
+            else ostr << ", ";
+            ostr << i;
+        }
+    }
+    ostr << '}';
+	return ostr;
 }

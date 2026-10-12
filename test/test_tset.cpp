@@ -295,3 +295,10 @@ TEST(TSet, check_negation_operator)
 
   EXPECT_EQ(expSet, set1);
 }
+/*TEST(TSet, test_main)
+{
+	const int size = 4;
+	TSet set(size);
+	cin >> set;
+	cout << set<<endl;
+}*/
