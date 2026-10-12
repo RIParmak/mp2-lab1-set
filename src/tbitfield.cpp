@@ -171,7 +171,7 @@ TBitField TBitField::operator&(const TBitField& bf) // операция "и"
     for (int i = 0; i < MemLen; i++) {
         res.pMem[i] &= pMem[i];
     }
-
+    res.ClearTail();
     return res;
 }
 
